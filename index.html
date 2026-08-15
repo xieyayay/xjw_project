@@ -162,20 +162,20 @@ a{color:inherit;text-decoration:none}
 
 /* ===== HERO ===== */
 .hero{
-  position:relative;min-height:92vh;
+  position:relative;min-height:100vh;
   display:flex;flex-direction:column;justify-content:center;align-items:center;
-  text-align:center;padding:0 6vw;overflow:hidden;
+  text-align:center;padding:8vh 6vw 10vh;overflow:hidden;
   background:url('1112811389206476574.jpg') center/cover no-repeat;
 }
 #leaffield{display:none}
-.hero-content{position:relative;z-index:4;max-width:860px}
+.hero-content{position:relative;z-index:4;max-width:860px;display:flex;flex-direction:column;gap:1.4rem;align-items:center}
 .hero-content::before{
   display:none;
 }
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:.7rem;
   font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;
-  color:var(--sage);margin-bottom:2rem;
+  color:var(--sage);margin:0 0 .2rem;
   opacity:0;animation:fadeUp 1s .2s forwards;
 }
 .hero-eyebrow::before,.hero-eyebrow::after{
@@ -184,7 +184,7 @@ a{color:inherit;text-decoration:none}
 .hero-name{
   font-family:'ZCOOL XiaoWei','Noto Serif SC',serif;
   font-size:clamp(3.6rem,9.6vw,7.4rem);font-weight:400;line-height:1.02;
-  letter-spacing:.08em;margin-bottom:.25rem;
+  letter-spacing:.08em;margin:0;
   opacity:0;animation:fadeUp 1.1s .35s forwards;
 }
 .hero-name .masked-name{
@@ -203,12 +203,12 @@ a{color:inherit;text-decoration:none}
 .hero-title{
   font-family:'Noto Serif SC',serif;
   font-size:clamp(1.05rem,2.2vw,1.4rem);font-weight:400;
-  color:var(--text-secondary);letter-spacing:.12em;margin-bottom:2.4rem;
+  color:var(--text-secondary);letter-spacing:.12em;margin:0;
   opacity:0;animation:fadeUp 1.1s .5s forwards;
 }
 .hero-title span{color:var(--sage)}
 .hero-tagline{
-  font-size:1rem;color:var(--text-muted);max-width:560px;margin:0 auto 2.8rem;
+  font-size:1rem;color:var(--text-muted);max-width:560px;margin:0;
   line-height:1.9;
   opacity:0;animation:fadeUp 1.1s .65s forwards;
   min-height:1.9em;
@@ -245,7 +245,7 @@ a{color:inherit;text-decoration:none}
 }
 @media(max-width:860px){.hero-promo{font-size:.68rem;padding:.5rem 1.2rem;gap:.75rem}}
 .particle-text{
-  position:relative;width:min(520px,86vw);height:68px;margin:0 auto 1.35rem;
+  position:relative;width:min(580px,92vw);height:56px;margin:0;
   opacity:0;animation:fadeUp 1.1s .58s forwards;
 }
 .particle-text canvas{display:none}
@@ -259,11 +259,11 @@ a{color:inherit;text-decoration:none}
 }
 .hero-cta{
   display:inline-flex;align-items:center;gap:.6rem;
-  padding:.95rem 2.2rem;border:1px solid var(--border);
+  padding:.9rem 2.1rem;border:1px solid var(--border);
   border-radius:40px;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;
   color:var(--text);background:var(--accent-soft);
   transition:all .4s ease;
-  opacity:0;animation:fadeUp 1.1s .8s forwards;
+  opacity:0;animation:fadeUp 1.1s .8s forwards;margin-top:.4rem;
 }
 .hero-cta:hover{
   background:var(--accent);color:var(--bg);border-color:var(--accent);
@@ -698,24 +698,10 @@ a{color:inherit;text-decoration:none}
 .gallery-grid{
   position:relative;height:clamp(430px,56vw,560px);
   overflow:hidden;cursor:grab;perspective:1200px;
-  border-radius:22px;
   touch-action:pan-y;
   user-select:none;
-  background:
-    radial-gradient(ellipse at 50% 18%,rgba(245,201,93,0.12),transparent 48%),
-    linear-gradient(180deg,rgba(20,17,10,0.26),rgba(20,17,10,0.08));
 }
 .gallery-grid:active{cursor:grabbing}
-.gallery-grid::before{
-  content:'';position:absolute;left:50%;bottom:-35%;width:min(900px,108vw);height:72%;
-  transform:translateX(-50%);
-  border:1px solid rgba(245,201,93,0.20);border-top:none;border-radius:0 0 50% 50%;
-  opacity:.45;pointer-events:none;
-}
-.gallery-grid::after{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(90deg,rgba(26,17,8,0.72),transparent 14%,transparent 86%,rgba(26,17,8,0.72));
-}
 .gallery-item{
   position:absolute;left:50%;top:50%;width:clamp(210px,24vw,310px);
   border-radius:16px;overflow:hidden;cursor:pointer;
@@ -754,30 +740,53 @@ a{color:inherit;text-decoration:none}
 .lightbox{
   position:fixed;inset:0;z-index:1000;display:none;
   align-items:center;justify-content:center;padding:5vh 5vw;
-  background:rgba(18,11,4,0.96);backdrop-filter:blur(8px);
+  background:rgba(8,5,2,0.94);backdrop-filter:blur(14px) saturate(1.1);-webkit-backdrop-filter:blur(14px) saturate(1.1);
+  box-shadow:inset 0 0 200px rgba(255,217,102,0.04);
 }
-.lightbox.open{display:flex;animation:fadeIn .35s}
-.lightbox-content{position:relative;max-width:900px;max-height:90vh}
-.lightbox-content img{max-width:100%;max-height:85vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,0.65), 0 0 0 1px var(--border)}
+.lightbox::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 50%,transparent 55%,rgba(0,0,0,0.55) 100%);
+}
+.lightbox.open{display:flex;animation:lbPop .38s cubic-bezier(.22,1,.36,1)}
+@keyframes lbPop{
+  0%{opacity:0}
+  100%{opacity:1}
+}
+.lightbox-content{position:relative;max-width:920px;max-height:92vh;padding:1.4rem}
+.lightbox-content img{
+  max-width:100%;max-height:78vh;border-radius:14px;
+  box-shadow:0 32px 88px rgba(0,0,0,0.72),0 0 0 1px rgba(160,232,192,0.35),0 0 48px rgba(160,232,192,0.22),0 0 18px rgba(255,217,102,0.18);
+  transition:transform .4s ease;
+}
+.lightbox.open .lightbox-content img{animation:lbImgIn .5s cubic-bezier(.22,1.3,.36,1) both}
+@keyframes lbImgIn{
+  0%{opacity:0;transform:scale(.92) translateY(10px)}
+  100%{opacity:1;transform:scale(1) translateY(0)}
+}
 .lightbox-close{
-  position:absolute;top:-3rem;right:0;width:42px;height:42px;border-radius:50%;
-  background:rgba(40,28,12,0.8);border:1px solid var(--border);color:var(--text);
+  position:absolute;top:.5rem;right:.5rem;width:44px;height:44px;border-radius:50%;
+  background:rgba(32,22,10,0.88);border:1px solid rgba(160,232,192,0.4);color:#a0e8c0;
   font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
-  transition:all .3s;
+  transition:all .3s;z-index:4;
+  box-shadow:0 4px 16px rgba(0,0,0,0.4),0 0 10px rgba(160,232,192,0.2);
 }
-.lightbox-close:hover{background:var(--accent);color:var(--bg)}
+.lightbox-close:hover{background:var(--accent);color:var(--bg);border-color:var(--accent);transform:rotate(90deg)}
 .lightbox-caption{
-  text-align:center;margin-top:1rem;color:var(--text-secondary);font-size:.95rem;
+  text-align:center;margin-top:1.1rem;color:var(--text-secondary);font-size:.95rem;
+  padding:.5rem 1.2rem;
 }
+.lightbox-caption::before{content:'✦ ';color:#ffd966}
+.lightbox-caption::after{content:' ✦';color:#a0e8c0}
 .lightbox-nav{
-  position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;
-  background:rgba(40,28,12,0.8);border:1px solid var(--border);color:var(--text);
-  font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
-  transition:all .3s;
+  position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;
+  background:rgba(32,22,10,0.88);border:1px solid rgba(160,232,192,0.4);color:#ffd966;
+  font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .3s;z-index:4;
+  box-shadow:0 4px 16px rgba(0,0,0,0.4),0 0 10px rgba(255,217,102,0.18);
 }
-.lightbox-nav:hover{background:var(--accent);color:var(--bg)}
-.lightbox-nav.prev{left:-70px}
-.lightbox-nav.next{right:-70px}
+.lightbox-nav:hover{background:var(--accent);color:var(--bg);border-color:var(--accent);transform:translateY(-50%) scale(1.1)}
+.lightbox-nav.prev{left:.2rem}
+.lightbox-nav.next{right:.2rem}
 
 /* ===== CONTACT ===== */
 .contact{text-align:center;position:relative;overflow:hidden;padding-bottom:4rem}
@@ -931,6 +940,8 @@ a{color:inherit;text-decoration:none}
   .nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
   .section{padding:4rem 5vw}
   .section-inner{padding:0;border-radius:0}
+  .hero{min-height:96vh;padding:6vh 5vw 9vh}
+  .hero-content{gap:1.1rem}
   .hero-content::before{display:none}
   .about-grid,.research-grid,.exp-layout{grid-template-columns:1fr;gap:2rem}
   .skills-layout{grid-template-columns:1fr;gap:3rem}
@@ -947,7 +958,11 @@ a{color:inherit;text-decoration:none}
   .lightbox-nav.prev{left:8px}
   .lightbox-nav.next{right:8px}
   .hero-vine{display:none}
-  .particle-text{height:58px}
+  .particle-text{height:48px;width:92vw}
+  .particle-text span{letter-spacing:.22em;font-size:clamp(.95rem,3.2vw,1.2rem)}
+  .hero-eyebrow{font-size:.7rem;letter-spacing:.26em;margin-bottom:0}
+  .hero-title{font-size:clamp(.95rem,2.4vw,1.2rem)}
+  .hero-tagline{font-size:.92rem;line-height:1.8}
   .gallery-grid{height:430px}
   .gallery-item{width:220px}
 }
@@ -1013,13 +1028,8 @@ a{color:inherit;text-decoration:none}
     <span class="hero-eyebrow">湖南农业大学 · 环境与生态学院</span>
     <h1 class="hero-name"><span class="masked-name">谢静<em>雯</em></span></h1>
     <p class="hero-title">生态学本科生 <span>·</span> 2023 – 2027</p>
-    <div class="particle-text" data-text="生态 · 科研 · 修复" aria-label="生态 · 科研 · 修复">
-      <canvas></canvas><span>生态 · 科研 · 修复</span>
-    </div>
-    <div class="hero-promo">
-      <span class="hero-promo-dot"></span>
-      <span>以<strong>生态</strong>为本 · 以<strong>科研</strong>为径 · 精于<strong>团队管理</strong></span>
-      <span class="hero-promo-dot"></span>
+    <div class="particle-text" data-text="生态 · 科研 · 修复 · 精于团队管理" aria-label="生态 · 科研 · 修复 · 精于团队管理">
+      <canvas></canvas><span>生态 · 科研 · 修复 · 精于团队管理</span>
     </div>
     <p class="hero-tagline">关注污染物降解与环境修复，在生态实践与科研中持续探索，愿以专业之力守护一方水土。</p>
     <a href="#about" class="hero-cta">了解我 →</a>
@@ -1531,11 +1541,14 @@ const galleryState = {
   visible: [],
   dragClearTimer: null
 };
+/* 点击起点（pointerdown）的卡片与坐标 —— 放在 grid 层是因为 grid.setPointerCapture 会夺走子元素的 pointerup */
+let galleryClickStart = null;
+galleryState.itemEls = [];
 const galleryItems = galleryData.map((item, i) => {
   const el = document.createElement('div');
   el.className = 'gallery-item';
   el.dataset.cat = item.cat;
-  el.dataset.index = i;
+  el.dataset.index = String(i);
   el.innerHTML = `
     <img src="${item.src}" alt="${item.name}" loading="lazy">
     <div class="gallery-overlay">
@@ -1543,12 +1556,10 @@ const galleryItems = galleryData.map((item, i) => {
       <div class="gallery-name">${item.name}</div>
       <div class="gallery-date">${item.date}</div>
     </div>`;
-  el.addEventListener('click', () => {
-    if(galleryState.dragged) return;
-    openLightbox(i);
-  });
   grid.appendChild(el);
-  return {el, item, index:i};
+  const entry = {el, item, index:i};
+  galleryState.itemEls.push(entry);
+  return entry;
 });
 
 function wrapOffset(value, length){
@@ -1605,7 +1616,10 @@ grid.addEventListener('pointerdown', e => {
   galleryState.dragged = false;
   galleryState.dragStartX = e.clientX;
   galleryState.dragStartTarget = galleryState.target;
-  grid.setPointerCapture(e.pointerId);
+  /* 记录点击起点卡片与坐标，作为"点击 vs 拖拽"判定依据（pointerup 会被 setPointerCapture 截走，必须在 grid 这层判断） */
+  const card = e.target.closest('.gallery-item');
+  galleryClickStart = card ? {el: card, idx: Number(card.dataset.index), x: e.clientX, y: e.clientY, t: Date.now()} : null;
+  try{ grid.setPointerCapture(e.pointerId); }catch(err){}
 });
 grid.addEventListener('pointermove', e => {
   if(!galleryState.dragging) return;
@@ -1618,6 +1632,21 @@ grid.addEventListener('pointerup', e => {
   try{ grid.releasePointerCapture(e.pointerId); }catch(err){}
   clearTimeout(galleryState.dragClearTimer);
   galleryState.dragClearTimer = setTimeout(() => { galleryState.dragged = false; }, 160);
+  /* 点击判定：起点记录了卡、位移 < 7px、用时 < 500ms、pointerup 位置还是在同一张卡上（或离得很近） */
+  const s = galleryClickStart;
+  if(s && Number.isFinite(s.idx)){
+    const dx = e.clientX - s.x, dy = e.clientY - s.y;
+    const dt = Date.now() - s.t;
+    if(Math.hypot(dx, dy) < 7 && dt < 500){
+      /* 再确认抬起点下的元素就是起点那张卡（或子元素），避免跨卡片拖拽被误判为点击 */
+      const elNow = document.elementFromPoint(e.clientX, e.clientY);
+      const cardNow = elNow && elNow.closest('.gallery-item');
+      if(cardNow === s.el){
+        openLightbox(s.idx);
+      }
+    }
+  }
+  galleryClickStart = null;
 });
 grid.addEventListener('pointercancel', () => { galleryState.dragging = false; });
 grid.addEventListener('wheel', e => {
